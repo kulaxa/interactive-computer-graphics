@@ -87,3 +87,7 @@ CTestTestfile.cmake
 _deps
 *cmake*build*
 *cmake*debug*
+
+
+# Executables
+lab[0-9]+
