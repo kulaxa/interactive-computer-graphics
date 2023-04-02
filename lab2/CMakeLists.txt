@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 find_package(glfw3 REQUIRED)
 
-add_executable(lab2 main.cpp)
+add_executable(project main.cpp)
 
-target_link_libraries(lab2 GL GLU GLEW glut glfw)
+target_link_libraries(project GL GLU GLEW glut glfw)
 set(CMAKE_BUILD_TYPE Debug)
