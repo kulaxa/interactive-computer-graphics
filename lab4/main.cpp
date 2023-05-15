@@ -27,8 +27,8 @@ glm::vec3 testPoint1 = glm::vec3(0.1, 0.1, 0.0);
 glm::vec3 testPoint2 = glm::vec3(0.5, 0.5, 0.0);
 glm::vec3 testPoint3 = glm::vec3(0.5, 0.5, -0.5);
 
-std::string filename = "resources/teddy.obj";
-bool convex = false;
+std::string filename = "resources/temple.obj";
+bool convex = true;
 
 std::vector<glm::vec3> points = {testPoint1, testPoint2, testPoint3, testPoint4, {0.0, 0.7, 0.8}, {0.7, 0.7, 0.8}, {-0.45, -0.05, -0.25}};
 //std::vector<glm::vec3> points = {};
