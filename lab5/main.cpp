@@ -18,7 +18,7 @@ GLuint width = 300, height = 300;
 std::vector<glm::vec3> scaledVertices;
 std::vector<glm::vec3> transformed_vertices;
 std::vector<glm::vec3> faces;
-std::string filename = "resources/kocka.obj";
+std::string filename = "resources/teddy.obj";
 glm::vec3 point = {0.5f, 0.5f, 0.f};
 
 glm::vec3 O = {0.f, 0.f, 20.f};
@@ -45,7 +45,7 @@ int main(int argc, char ** argv) {
     Utils::readVerticesAndFaces(filename, vertices, faces);
 
     scaledVertices = Utils::scaleToOne(vertices);
-    scaledVertices = vertices;
+    //scaledVertices = vertices;
     transformed_vertices = scaledVertices;
     Utils::minMax minMax = Utils::getMinMax(scaledVertices);
      O = glm::vec3(minMax.XMax + 1.f,minMax.YMax + 1.f, minMax.ZMax+ 1.f);
