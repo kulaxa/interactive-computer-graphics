@@ -28,11 +28,10 @@ glm::vec3 lookAtPoint;
 
 // Lighting
 glm::vec3 lightPos = glm::vec3(0.0f, -3.0f,  -2.0f);
-
+bool constantLight = true;
 
 // normals
-std::vector<glm::vec3> normals;
-std::vector<uint32_t> numOfNeighbours;
+
 //*********************************************************************************
 //	Function Prototypes.
 //*********************************************************************************
@@ -94,10 +93,19 @@ void myPolygon()
         uint32_t n = 1;
 
         // 0 - constant, 1 - Gouraud, 2 - Phong
-        //float light = Utils::constantLighting(v1, v2, v3, lightPos, cameraPos, sourceIntensity, shadowIntensity, 0.5f, 0.5f, 0.5f, n);
-        glm::vec3 light_g = Utils::gouraudoLighting(v1_index, v2_index, v3_index, scaledVertices, normals, lightPos, cameraPos, sourceIntensity, shadowIntensity, 0.5f, 0.5f, 0.5f, n);
-        //glColor4f(norm_light, norm_light, norm_light, 1.0f);
+        glm::vec3 light_g;        //glColor4f(norm_light, norm_light, norm_light, 1.0f);
 
+        if (constantLight){
+            float light = Utils::constantLighting(v1, v2, v3, lightPos, cameraPos, sourceIntensity, shadowIntensity, 0.5f, 0.5f, 0.5f, n);
+
+            light_g.x = light;
+            light_g.y = light;
+            light_g.z = light;
+        }
+        else{
+            light_g = Utils::gouraudoLighting(v1_index, v2_index, v3_index, scaledVertices, normals, lightPos, cameraPos, sourceIntensity, shadowIntensity, 0.5f, 0.5f, 0.5f, n);
+
+        }
         glColor4f(light_g.x, light_g.x, light_g.x, 1.0f);
         glVertex3f(v1.x, v1.y, v1.z);
         glColor4f(light_g.y, light_g.y, light_g.y, 1.0f);
@@ -141,11 +149,6 @@ void myReshape(int w, int h) {
 // glMatrixMode(GL_MODELVIEW);
 
 
-    // Set up an orthographic projection matrix
-  //  glMatrixMode(GL_PROJECTION);
-   // glLoadIdentity();
-    //glOrtho(-2, 2, -2, 2, -5, 5);
-
 
     glClearColor(0.5f, 1.0f, 1.0f, 0.0f); // boja pozadine
     glClear(GL_COLOR_BUFFER_BIT);        //	brisanje pozadine
@@ -180,6 +183,12 @@ void myKeyboard(unsigned char theKey, int mouseX, int mouseY) {
     if (theKey == 'd' || theKey == 'D'){
         cameraPos.x += 0.1f;
 //        myReshape(width, height);
+        myDisplay();
+
+    }
+
+    if (theKey == 'g' || theKey == 'G') {
+        constantLight = !constantLight;
         myDisplay();
 
     }
