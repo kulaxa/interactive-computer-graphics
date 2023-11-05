@@ -4,6 +4,10 @@ project(lab4)
 set(CMAKE_CXX_STANDARD 11)
 
 find_package(glfw3 REQUIRED)
+find_package(glm REQUIRED)
+find_package(GLUT REQUIRED)
+find_package(GLEW REQUIRED)
+include_directories( ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} )
 
 
 
