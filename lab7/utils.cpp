@@ -184,10 +184,10 @@ namespace  Utils {
         float r = glm::length(v1 - V);
         float ambient = Ia * Ka;
         float diffuse = kd * std::max(glm::dot(N, L), 0.0f);
-        float specular = ks * std::pow(std::max(glm::dot(R, V), 0.0f), n);
+        float reflective = ks * std::pow(std::max(glm::dot(R, V), 0.0f), n);
         float intensity = Ii / (r + k);
 
-        return (ambient + intensity * (diffuse + specular)) / 255.0f;
+        return (ambient + intensity * (diffuse + reflective)) / 255.0f;
 
     }
 

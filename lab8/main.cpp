@@ -46,6 +46,10 @@ std::cout << "Upisite 1 za mandelbrot, 2 za julia: ";
     }else if (input == 2){
         isMandelbrot = false;
     }
+    else{
+        std::cout << "Krivi unos" << std::endl;
+        return 0;
+    }
 
     std::cout << "Upisite espilon i maksimalni broj iteracija: ";
      std::cin >> eps >> m;
@@ -103,6 +107,7 @@ void myDisplay()
 
             }
             glBegin(GL_POINTS);
+
             float color = 1 - k / (float) m;
             glColor4f(color, color, color, 1.0f);
             float x = 2 * (i / (float) width - 0.5f);

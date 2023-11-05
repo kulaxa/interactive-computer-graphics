@@ -16,7 +16,6 @@ GLint Ix;
 GLuint window;
 GLuint width = 300, height = 300;
 std::vector<glm::vec3> scaledVertices;
-std::vector<glm::vec3> control_points;
 std::vector<glm::vec3> faces;
 std::string filename = "resources/teddy.obj";
 
@@ -93,7 +92,7 @@ void myPolygon()
         uint32_t n = 1;
 
         // 0 - constant, 1 - Gouraud, 2 - Phong
-        glm::vec3 light_g;        //glColor4f(norm_light, norm_light, norm_light, 1.0f);
+        glm::vec3 light_g;
 
         if (constantLight){
             float light = Utils::constantLighting(v1, v2, v3, lightPos, cameraPos, sourceIntensity, shadowIntensity, 0.5f, 0.5f, 0.5f, n);
